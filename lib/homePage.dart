@@ -400,7 +400,7 @@ class _homePage extends State<homePage>
                            return  Container(
 
                              width: double.infinity,
-                             height: 200,
+                             height: 280,
 
                              child: GridView.count(
                                // Create a grid with 2 columns. If you change the scrollDirection to
@@ -432,6 +432,52 @@ class _homePage extends State<homePage>
 
                     ])),
 
+
+                    SliverList(delegate: SliverChildListDelegate([
+
+                      SizedBox(
+
+                        height: 20,
+
+                      ),
+
+                      Container(
+
+                          padding: EdgeInsets.only(left: 5),
+
+                          child: Text('Coming soon',style: TextStyle(fontSize: 20,color: Color(0xFF383e56)),)),
+
+                     SizedBox(
+
+                       height: 20,
+
+                     ),
+
+                     Container(
+
+                       padding: EdgeInsets.only(left: 5,right: 5),
+
+                       width: double.infinity,
+                       height: 230,
+
+                       child:Card(
+                         
+                         child: Image.network('https://cdn.pixabay.com/photo/2017/05/23/22/33/birthday-2338813__340.jpg',fit: BoxFit.cover),
+                         
+                       )
+
+                     ),
+
+                      SizedBox(
+
+                        height: 20,
+
+                      )
+
+
+
+                    ]
+                    ))
 
                   ],
 
