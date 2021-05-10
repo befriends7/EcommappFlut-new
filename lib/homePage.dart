@@ -389,20 +389,20 @@ class _homePage extends State<homePage>
                         height: 20,
                       ),
 
-                      FutureBuilder<List<modelStore>>(
+                      Container(
 
-                        future:model.storeLoad(),
-                        builder:(contxt,snapshot)
-                        {
+                        width: double.infinity,
+                        height: 380,
 
-                          if(snapshot.data!=null)
-                            {
-                           return  Container(
+                        child: FutureBuilder<List<modelStore>>(
 
-                             width: double.infinity,
-                             height: 280,
+                          future:model.storeLoad(),
+                          builder:(contxt,snapshot)
+                          {
 
-                             child: GridView.count(
+                            if(snapshot.data!=null)
+                              {
+                             return  GridView.count(
                                // Create a grid with 2 columns. If you change the scrollDirection to
                                // horizontal, this produces 2 rows.
                                crossAxisCount: 2,
@@ -413,21 +413,20 @@ class _homePage extends State<homePage>
                                  return Container(
 
                                    width: 40,
-                                   height: 40,
+                                   height: 30,
                                    child:Card(child: Image.network(snapshot.data![index].image))
                                  );
                                }),
-                             )
+                             );
+                              }
+                            else
+                              {
+                                 return Center(child: CircularProgressIndicator.adaptive(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFFF5200))));
+                              }
 
-                           );
-                            }
-                          else
-                            {
-                               return Center(child: CircularProgressIndicator.adaptive(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFFF5200))));
-                            }
+                          }
 
-                        }
-
+                        ),
                       ),
 
                     ])),
@@ -470,7 +469,7 @@ class _homePage extends State<homePage>
 
                       SizedBox(
 
-                        height: 20,
+                        height: 30,
 
                       )
 
