@@ -56,37 +56,13 @@ class _homePage extends State<homePage>
 
                       decoration: BoxDecoration(
 
-                        gradient: LinearGradient(
+                        image: DecorationImage(
 
-                          colors: [
-
-                            Color(0xFFFF5200),
-                            Color(0xFFe48900)
-
-                          ]
-
+                          image: NetworkImage('https://cdn.pixabay.com/photo/2015/10/27/12/26/gift-1008894__340.jpg'),fit: BoxFit.fill
                         )
 
-                      ),
-
-                        child:Column(
-
-                      children: [
-
-                        SizedBox(height: 20,),
-
-                        CircleAvatar(
-
-                          backgroundColor: Colors.white,
-
-                          radius:40.0,
-                          child: Image.network('https://cdn.pixabay.com/photo/2014/04/02/10/48/head-304615_960_720.png',fit: BoxFit.fill,),
-
-                        )
-
-                      ],
-
-                    ))
+                ), child: null,
+              ),
 
                   ],
 
@@ -104,8 +80,9 @@ class _homePage extends State<homePage>
 
                       colors: [
 
-                        Color(0xFFFF5200),
-                        Color(0xFFe48900),
+                        Color(0xFF64dfdf),
+                        Color(0xFF6930c3),
+
 
                       ]
 
