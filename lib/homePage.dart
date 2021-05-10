@@ -6,6 +6,7 @@ import 'package:ecomap/modelStore.dart';
 import 'package:ecomap/setUplocator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:shimmer/shimmer.dart';
@@ -261,13 +262,10 @@ class _homePage extends State<homePage>
 
 
 
-
-
                              ),
             ]
                            ),
                          ),
-
 
 
                       SliverList(
@@ -377,6 +375,9 @@ class _homePage extends State<homePage>
 
                                         );
 
+
+
+
                                       }
 
                                     else
@@ -384,8 +385,7 @@ class _homePage extends State<homePage>
                                         return Center(child: CircularProgressIndicator.adaptive(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFFF5200))));
                                     }
 
-                                  }
-
+                                  },
 
 
                           ),
@@ -394,8 +394,69 @@ class _homePage extends State<homePage>
                       ),
 
 
+                    SliverList(delegate: SliverChildListDelegate([
 
-                    ],
+                      SizedBox(
+
+                        height: 20,
+                      ),
+
+                      Container(
+
+                        padding: EdgeInsets.only(left: 5),
+
+                          child: Text('In Store',style: TextStyle(fontSize: 20,color: Color(0xFF383e56)),)),
+
+                      SizedBox(
+
+                        height: 20,
+                      ),
+
+                      FutureBuilder<List<modelStore>>(
+
+                        future:model.storeLoad(),
+                        builder:(contxt,snapshot)
+                        {
+
+                          if(snapshot.data!=null)
+                            {
+                           return  Container(
+
+                             width: double.infinity,
+                             height: 200,
+
+                             child: GridView.count(
+                               // Create a grid with 2 columns. If you change the scrollDirection to
+                               // horizontal, this produces 2 rows.
+                               crossAxisCount: 2,
+                               crossAxisSpacing: 2,
+                               mainAxisSpacing: 2,
+                               // Generate 100 widgets that display their index in the List.
+                               children: List.generate(snapshot.data!.length, (index) {
+                                 return Container(
+
+                                   width: 40,
+                                   height: 40,
+                                   child:Card(child: Image.network(snapshot.data![index].image))
+                                 );
+                               }),
+                             )
+
+                           );
+                            }
+                          else
+                            {
+                               return Center(child: CircularProgressIndicator.adaptive(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFFF5200))));
+                            }
+
+                        }
+
+                      ),
+
+                    ])),
+
+
+                  ],
 
 
                 )
