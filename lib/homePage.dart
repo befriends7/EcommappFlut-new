@@ -1,5 +1,6 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecomap/gridPage.dart';
 import 'package:ecomap/homeModel.dart';
 import 'package:ecomap/modelReq.dart';
 import 'package:ecomap/modelStore.dart';
@@ -39,7 +40,7 @@ class _homePage extends State<homePage>
         model: locator<homeModel>(),
         child: ScopedModelDescendant<homeModel>(
 
-          builder: (context,child,model)=>Container(
+          builder: (contxts,child,model)=>Container(
 
             width: double.infinity,
             height: double.infinity,
@@ -410,11 +411,19 @@ class _homePage extends State<homePage>
                                mainAxisSpacing: 2,
                                // Generate 100 widgets that display their index in the List.
                                children: List.generate(snapshot.data!.length, (index) {
-                                 return Container(
+                                 return GestureDetector(
 
-                                   width: 40,
-                                   height: 30,
-                                   child:Card(child: Image.network(snapshot.data![index].image))
+                                   onTap: ()
+                                   {
+                                        Navigator.push(contxts,MaterialPageRoute(builder: (contxt)=>gridPage(title: snapshot.data![index].category,)));
+                                   },
+
+                                   child: Container(
+
+                                     width: 40,
+                                     height: 30,
+                                     child:Card(child: Image.network(snapshot.data![index].image))
+                                   ),
                                  );
                                }),
                              );
