@@ -2,6 +2,7 @@
 
 import 'package:condition/condition.dart';
 import 'package:ecomap/homeModel.dart';
+import 'package:ecomap/homePage.dart';
 import 'package:ecomap/modelStore.dart';
 import 'package:ecomap/setUplocator.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,7 +49,22 @@ class _gridPage extends State<gridPage>
           builder: (contxt,child,model)=>Scaffold(
 
 
-            appBar: AppBar(centerTitle:true,title:Text(titles),flexibleSpace:
+            appBar: AppBar(centerTitle:true,
+
+                leading: GestureDetector(
+
+                  onTap: (){
+
+                    Navigator.push(contxt,MaterialPageRoute(builder: (contxt)=>homePage()));
+
+                  },
+
+
+                  child: Icon(Icons.arrow_back,color: Colors.white,),
+
+                ),
+
+                title:Text(titles),flexibleSpace:
 
                 Container(
 
@@ -69,6 +85,7 @@ class _gridPage extends State<gridPage>
                   ),
 
                 )
+
 
               ),
 
